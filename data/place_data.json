@@ -1,20 +1,124 @@
 {
-    "neighbourhoods": [
-        {
-            "name": "Waterfront Communities-The Island",
-            "landmark": "CN Tower",
-            "photos": [
-                { "year": 2011, "url": "images/cntower_2011.jpg", "caption": "CN Tower, 2015" },
-                { "year": 2021, "url": "images/cntower_2021.jpg", "caption": "CN Tower, 2021" }
-            ]
-        },
-        {
-            "name": "High-Park Senwasa",
-            "landmark": "CN Tower",
-            "photos": [
-                { "year": 2011, "url": "images/highpark_2011.jpg", "caption": "High Park, 2015" },
-                { "year": 2021, "url": "images/highpark_2021.jpg", "caption": "High Park, 2021" }
-            ]
-        }
-    ]
+   "neighbourhoods": [
+       {
+           "name": "Waterfront Communities-The Island",
+           "landmark": "CN Tower",
+           "photos": [
+               { "year": 2011, "url": "images/cntower_2011.jpg", "caption": "CN Tower, 2011" },
+               { "year": 2021, "url": "images/cstower_2021.jpg", "caption": "CN Tower, 2021" }
+           ],
+           "sample_data": [
+               { "year": 2011, "population": 33000, "income": 74000, "density": 15000 },
+               { "year": 2021, "population": 42000, "income": 78000, "density": 17000 }
+           ]
+       },
+       {
+           "name": "High Park",
+           "landmark": "High Park",
+           "photos": [
+               { "year": 2011, "url": "images/highpark_2011.jpg", "caption": "High Park, 2011" },
+               { "year": 2021, "url": "images/highpark_2021.webp", "caption": "High Park, 2021" }
+           ],
+           "sample_data": [
+               { "year": 2011, "population": 28000, "income": 68000, "density": 12000 },
+               { "year": 2021, "population": 32000, "income": 72000, "density": 14000 }
+           ]
+       },
+       {
+           "name": "Downtown Yonge",
+           "landmark": "City Hall",
+           "photos": [
+               { "year": 1965, "url": "images/cityhall_1965.jpg", "caption": "City Hall, 1965" },
+               { "year": 2025, "url": "images/cityhall_2025.jpg", "caption": "City Hall, 2025" }
+           ],
+           "sample_data": [
+               { "year": 1965, "population": 45000, "income": 45000, "density": 18000 },
+               { "year": 2025, "population": 65000, "income": 85000, "density": 22000 }
+           ]
+       },
+       {
+           "name": "Casa Loma",
+           "landmark": "Casa Loma",
+           "photos": [
+               { "year": 1963, "url": "images/casa_loma_1963.png", "caption": "Casa Loma, 1963" },
+               { "year": 2024, "url": "images/casa_loma_2024.png", "caption": "Casa Loma, 2024" }
+           ],
+           "sample_data": [
+               { "year": 1963, "population": 15000, "income": 35000, "density": 8000 },
+               { "year": 2024, "population": 18000, "income": 95000, "density": 12000 }
+           ]
+       },
+       {
+           "name": "University of Toronto",
+           "landmark": "University of Toronto",
+           "photos": [
+               { "year": 1930, "url": "images/utsg_1930.webp", "caption": "University of Toronto, 1930" },
+               { "year": 2025, "url": "images/utsg_2025.jpg", "caption": "University of Toronto, 2025" }
+           ],
+           "sample_data": [
+               { "year": 1930, "population": 8000, "income": 25000, "density": 5000 },
+               { "year": 2025, "population": 12000, "income": 75000, "density": 15000 }
+           ]
+       },
+       {
+           "name": "St. Lawrence Market",
+           "landmark": "St. Lawrence Market",
+           "photos": [
+               { "year": 1972, "url": "images/st_lawerence_1972.png", "caption": "St. Lawrence Market, 1972" },
+               { "year": 2024, "url": "images/st_lawarence_market_2024.jpg", "caption": "St. Lawrence Market, 2024" }
+           ],
+           "sample_data": [
+               { "year": 1972, "population": 12000, "income": 30000, "density": 6000 },
+               { "year": 2024, "population": 15000, "income": 65000, "density": 10000 }
+           ]
+       },
+       {
+           "name": "Union Station",
+           "landmark": "Union Station",
+           "photos": [
+               { "year": 1977, "url": "images/union_station_1977.png", "caption": "Union Station, 1977" },
+               { "year": 2018, "url": "images/union_station_2018.png", "caption": "Union Station, 2018" }
+           ],
+           "sample_data": [
+               { "year": 1977, "population": 25000, "income": 40000, "density": 10000 },
+               { "year": 2018, "population": 35000, "income": 80000, "density": 18000 }
+           ]
+       },
+       {
+           "name": "Queen and Bay",
+           "landmark": "Queen and Bay Intersection",
+           "photos": [
+               { "year": 1960, "url": "images/1960_queen_and_bay.png", "caption": "Queen and Bay, 1960" },
+               { "year": 2020, "url": "images/2020_queen_and_bay.png", "caption": "Queen and Bay, 2020" }
+           ],
+           "sample_data": [
+               { "year": 1960, "population": 20000, "income": 25000, "density": 8000 },
+               { "year": 2020, "population": 40000, "income": 70000, "density": 20000 }
+           ]
+       },
+       {
+           "name": "Bloor and Christie",
+           "landmark": "Bloor and Christie",
+           "photos": [
+               { "year": 1920, "url": "images/bloor_and_christie_1920.png", "caption": "Bloor and Christie, 1920" },
+               { "year": 2024, "url": "images/bloor_and_christia_2024.png", "caption": "Bloor and Christie, 2024" }
+           ],
+           "sample_data": [
+               { "year": 1920, "population": 15000, "income": 20000, "density": 5000 },
+               { "year": 2024, "population": 25000, "income": 60000, "density": 12000 }
+           ]
+       },
+       {
+           "name": "Allan Gardens",
+           "landmark": "Allan Gardens",
+           "photos": [
+               { "year": 1862, "url": "images/allan_gardens_1862.jpg", "caption": "Allan Gardens, 1862" },
+               { "year": 2020, "url": "images/allen_gardens_2020s.webp", "caption": "Allan Gardens, 2020s" }
+           ],
+           "sample_data": [
+               { "year": 1862, "population": 5000, "income": 15000, "density": 2000 },
+               { "year": 2020, "population": 12000, "income": 55000, "density": 8000 }
+           ]
+       }
+   ]
 }
