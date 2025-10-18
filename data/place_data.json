@@ -1,0 +1,28 @@
+{
+    "neighbourhoods": [
+        {
+            "name": "Waterfront Communities-The Island",
+            "landmark": "CN Tower",
+            "photos": [
+                { "year": 2011, "url": "images/cntower_2011.jpg", "caption": "CN Tower, 2015" },
+                { "year": 2021, "url": "images/cntower_2021.jpg", "caption": "CN Tower, 2021" }
+            ],
+            "sample_data": [
+                { "year": 2011, "population": 33000, "income": 74000, "density": 15000 },
+                { "year": 2021, "population": 42000, "income": 78000, "density": 17000 }
+            ]
+        },
+        {
+            "name": "High-Park Senwasa",
+            "landmark": "CN Tower",
+            "photos": [
+                { "year": 2011, "url": "images/highpark_2011.jpg", "caption": "High Park, 2015" },
+                { "year": 2021, "url": "images/highpark_2021.jpg", "caption": "High Park, 2021" }
+            ],
+            "sample_data": [
+                { "year": 2011, "population": 33000, "income": 74000, "density": 15000 },
+                { "year": 2021, "population": 42000, "income": 78000, "density": 17000 }
+            ]
+        }
+    ]
+}

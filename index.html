@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GTA Time Lens</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+    <h1>Toronto TimeLens</h1>
+
+    <div id="controls">
+        <div>
+            <label for="location-select">Location:</label>
+            <select id="location-select"></select>
+        </div>
+        <div class="year-selectors">
+            <div>
+                <label for="year-left">Left Year:</label>
+                <select id="year-left"></select>
+            </div>
+            <div>
+                <label for="year-right">Right Year:</label>
+                <select id="year-right"></select>
+            </div>
+        </div>
+    </div>
+
+    <div id="phones">
+        <div class="phone" id="phone-left">
+            <!-- <img class="phone-frame" id="frame-left" src="images/iphones/iphone_2010.png" /> -->
+            <img class="phone-screen" id="screen-left" src="" />
+        </div>
+
+        <div class="phone" id="phone-right">
+            <!-- <img class="phone-frame" id="frame-right" src="images/iphones/iphone_2025.png" /> -->
+            <img class="phone-screen" id="screen-right" src="" />
+        </div>
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
