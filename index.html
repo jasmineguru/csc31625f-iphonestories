@@ -4,40 +4,56 @@
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <title>Memories of Toronto</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="css/style.css" />
    <link rel="stylesheet" href="css/fontawesome.min.css" />
 </head>
 <body>
 <div id="app">
-   <h1>Memores of Toronto</h1>
+   <h1>Memories of <span class="toronto-sign-title">
+       <span class="toronto-letter-title blue">T</span>
+       <span class="toronto-letter-title white">O</span>
+       <span class="toronto-letter-title blue">R</span>
+       <span class="toronto-letter-title white">O</span>
+       <span class="toronto-letter-title blue">N</span>
+       <span class="toronto-letter-title white">T</span>
+       <span class="toronto-letter-title blue">O</span>
+   </span></h1>
    <p class="subtitle">by Jasmine & Henry</p>
 
 
    <div id="main-layout">
        <div id="controls">
            <div class="control-group">
-               <label for="neighborhood-select">Neighborhood:</label>
-               <select id="neighborhood-select">
-                   <option value="">Select a neighborhood...</option>
-               </select>
-           </div>
-           <div class="control-group">
-               <label for="year-select">Year:</label>
-               <select id="year-select">
-                   <option value="">Select a year...</option>
-               </select>
+               <div id="design-context">
+                   <!-- Edit this text to add your design context -->
+                   <span class="word toronto-sign">
+                       <span class="toronto-letter blue">T</span>
+                       <span class="toronto-letter white">O</span>
+                       <span class="toronto-letter blue">R</span>
+                       <span class="toronto-letter white">O</span>
+                       <span class="toronto-letter blue">N</span>
+                       <span class="toronto-letter white">T</span>
+                       <span class="toronto-letter blue">O</span>
+                   </span> <span class="word">  is</span> <span class="word">a</span> <span class="word">fast-changing</span> <span class="word">city...</span> <br> <span class="word">But</span> <span class="word">how</span> <span class="word emphasized">fast?</span><br>
+                   <span class="word">Explore</span> <span class="word">our</span> <span class="word emphasized">visualization</span> <span class="word">to</span> <span class="word">find</span> <span class="word">out!</span> 
+               </div>
            </div>
        </div>
 
+
+       <div id="phone-container-wrapper">
+           <div id="location-label-left" class="location-label">
+               <div id="location-year-left"></div>
+           </div>
 
        <div id="phone-container">
        <!-- Polaroid Photo -->
        <div id="polaroid">
            <div id="polaroid-photo">
                <img id="polaroid-image" src="" alt="Polaroid photo" />
-           </div>
-           <div id="polaroid-caption">
-               <p id="polaroid-text"></p>
            </div>
        </div>
       
@@ -118,16 +134,13 @@
                <div id="divider">
                    <div id="divider-handle"></div>
                </div>
-              
-               <!-- Image overlay -->
-               <div id="image-overlay">
-                   <div id="location-info">
-                       <h3 id="location-name"></h3>
-                       <p id="location-year"></p>
-                   </div>
-               </div>
            </div>
        </div>
+       </div>
+
+           <div id="location-label-right" class="location-label">
+               <div id="location-year-right"></div>
+           </div>
        </div>
    </div>
 </div>

@@ -12,60 +12,18 @@ d3.json("data/place_data.json").then(data => {
 
 
 function initializeApp() {
-   // Populate neighborhood dropdown
-   const neighborhoodSelect = d3.select("#neighborhood-select");
-   const neighborhoods = appData.neighbourhoods.map(d => d.name);
-  
-   neighborhoodSelect
-       .selectAll("option")
-       .data(neighborhoods)
-       .enter()
-       .append("option")
-       .attr("value", d => d)
-       .text(d => d);
-
-
-   // Set up event listeners
-   d3.select("#neighborhood-select")
-       .on("change", function() {
-           const selectedNeighborhood = this.value;
-           if (selectedNeighborhood) {
-               currentNeighborhood = appData.neighbourhoods.find(d => d.name === selectedNeighborhood);
-               updateYearDropdown();
-               updateDisplay();
-           }
-       });
-
-
-   d3.select("#year-select")
-       .on("change", function() {
-           currentYear = parseInt(this.value);
-           if (currentYear && currentNeighborhood) {
-               updateDisplay();
-           }
-       });
-
-
-   // Set default selection to High Park for testing
+   // Set default selection to High Park for display
    setTimeout(() => {
-       d3.select("#neighborhood-select").property("value", "High Park");
-       d3.select("#neighborhood-select").dispatch("change");
+       currentNeighborhood = appData.neighbourhoods.find(d => d.name === "High Park");
+       if (currentNeighborhood) {
+           updateYearDropdown();
+           updateDisplay();
+       }
    }, 100);
 }
 
 
 function updateYearDropdown() {
-   const yearSelect = d3.select("#year-select");
-  
-   // Clear all existing options
-   yearSelect.selectAll("option").remove();
-  
-   // Add default option
-   yearSelect.append("option")
-       .attr("value", "")
-       .text("Select a year...");
-
-
    if (currentNeighborhood) {
        // Debug: log the current neighborhood and its photos
        console.log("Current neighborhood:", currentNeighborhood);
@@ -74,29 +32,9 @@ function updateYearDropdown() {
        const availableYears = currentNeighborhood.photos.map(photo => photo.year).sort();
        console.log("Available years:", availableYears);
       
-       // Create options for each year
-       const options = yearSelect.selectAll("option.year-option")
-           .data(availableYears);
-          
-       // Remove any existing year options
-       options.exit().remove();
-      
-       // Add new year options
-       const newOptions = options.enter()
-           .append("option")
-           .attr("class", "year-option")
-           .attr("value", d => d)
-           .text(d => d);
-          
-       // Merge with existing options
-       options.merge(newOptions);
-
-
        // Auto-select first year (2011 for High Park)
-       if (availableYears.length > 0) {
-           yearSelect.property("value", availableYears[0]);
+       if (availableYears.length > 0 && !currentYear) {
            currentYear = availableYears[0];
-           updateDisplay();
        }
    }
 }
@@ -121,12 +59,13 @@ function updateDisplay() {
        // Load polaroid image (2011)
        loadImage("#polaroid-image", leftPhoto.url);
       
-       // Update overlay information
-       d3.select("#location-name").text(currentNeighborhood.name);
-       d3.select("#location-year").text("Then vs. Now");
+       // Update left and right labels
+       d3.select("#location-year-left").html(`${leftPhoto.year} • <strong>${currentNeighborhood.name}</strong>`);
+       d3.select("#location-year-right").html(`<strong>${currentNeighborhood.name}</strong> • Now`);
       
-       // Update polaroid caption
-       d3.select("#polaroid-text").text(`${leftPhoto.year} • ${currentNeighborhood.name}`);
+       // Auto-adjust font size to fit max width
+       adjustLabelFontSize("#location-year-left", "#location-label-left", 0.8);
+       adjustLabelFontSize("#location-year-right", "#location-label-right", 1.2);
       
        // Initialize drag functionality
        initializeDrag();
@@ -182,8 +121,11 @@ function initializeDrag() {
        const screenWidth = screenContent.node().offsetWidth;
        const newDividerPosition = startDividerPosition + (deltaX / screenWidth * 100);
       
-       // Constrain between 0% and 100%
-       const constrainedPosition = Math.max(0, Math.min(100, newDividerPosition));
+       // Calculate max position to prevent divider from extending beyond container
+       // Divider is 4px wide, so max position is (width - 4) / width * 100
+       const dividerWidth = 4;
+       const maxPosition = ((screenWidth - dividerWidth) / screenWidth) * 100;
+       const constrainedPosition = Math.max(0, Math.min(maxPosition, newDividerPosition));
       
        // Update clip paths to show/hide parts of each image
        leftContainer.style("clip-path", `inset(0 ${100 - constrainedPosition}% 0 0)`);
@@ -220,8 +162,11 @@ function initializeDrag() {
        const screenWidth = screenContent.node().offsetWidth;
        const newDividerPosition = startDividerPosition + (deltaX / screenWidth * 100);
       
-       // Constrain between 0% and 100%
-       const constrainedPosition = Math.max(0, Math.min(100, newDividerPosition));
+       // Calculate max position to prevent divider from extending beyond container
+       // Divider is 4px wide, so max position is (width - 4) / width * 100
+       const dividerWidth = 4;
+       const maxPosition = ((screenWidth - dividerWidth) / screenWidth) * 100;
+       const constrainedPosition = Math.max(0, Math.min(maxPosition, newDividerPosition));
       
        // Update clip paths to show/hide parts of each image
        leftContainer.style("clip-path", `inset(0 ${100 - constrainedPosition}% 0 0)`);
@@ -307,11 +252,25 @@ function updateColorSaturation(dividerPosition) {
    const rightGrayscale = dividerPosition; // 0% = colored, 100% = black and white
    rightImage.style("filter", `grayscale(${rightGrayscale}%)`);
   
-   // Phone always shows on the right side of the divider
-   phone.style("clip-path", `inset(0 0 0 ${dividerPosition}%)`);
+   // Phone frame should remain stationary - don't clip it
+   // Only the images inside screen-content are clipped
   
-   // Polaroid always shows on the left side of the divider
-   polaroid.style("clip-path", `inset(0 ${100 - dividerPosition}% 0 0)`);
+   // Calculate polaroid clip-path to align with divider position
+   // Divider is positioned within screen-content (262px wide, starting at 20px from phone left)
+   // Phone and polaroid are both 300px wide
+   // Convert divider position to polaroid coordinate system
+   const screenContentLeft = 20; // pixels from left edge of phone
+   const screenContentWidth = 262; // pixels
+   const phoneWidth = 300; // pixels (same as polaroid)
+   
+   // Calculate divider's absolute position from left edge of phone/polaroid
+   const dividerAbsolutePx = screenContentLeft + (dividerPosition / 100) * screenContentWidth;
+   // Convert to percentage of phone/polaroid width
+   const dividerAbsolutePercent = (dividerAbsolutePx / phoneWidth) * 100;
+   
+   // Polaroid shows left side up to divider position
+   // Clip from right: show 0% to dividerAbsolutePercent%
+   polaroid.style("clip-path", `inset(0 ${100 - dividerAbsolutePercent}% 0 0)`);
   
    // Keep polaroid vertical (no rotation)
    polaroid.style("transform", `rotate(0deg)`);
@@ -332,9 +291,18 @@ function setInitialPosition() {
    leftContainer.style("clip-path", `inset(0 ${100 - initialPosition}% 0 0)`);
    rightContainer.style("clip-path", `inset(0 0 0 ${initialPosition}%)`);
   
-   // Set initial clip paths for phone and polaroid
-   phone.style("clip-path", `inset(0 0 0 ${initialPosition}%)`);
-   polaroid.style("clip-path", `inset(0 ${100 - initialPosition}% 0 0)`);
+   // Phone frame should remain stationary - don't clip it
+   // Only the images inside screen-content are clipped
+   
+   // Calculate polaroid clip-path to align with divider position (same calculation as updateColorSaturation)
+   const screenContentLeft = 20; // pixels from left edge of phone
+   const screenContentWidth = 262; // pixels
+   const phoneWidth = 300; // pixels (same as polaroid)
+   
+   const dividerAbsolutePx = screenContentLeft + (initialPosition / 100) * screenContentWidth;
+   const dividerAbsolutePercent = (dividerAbsolutePx / phoneWidth) * 100;
+   
+   polaroid.style("clip-path", `inset(0 ${100 - dividerAbsolutePercent}% 0 0)`);
   
    divider.style("left", initialPosition + "%");
   
@@ -355,13 +323,13 @@ function addPhoneInteractions() {
        d3.select(this).transition()
            .duration(300)
            .style("transform", "scale(1.02) rotateX(2deg) rotateY(2deg)")
-           .style("filter", "drop-shadow(0 20px 50px rgba(0,0,0,0.5)) drop-shadow(0 8px 20px rgba(0,0,0,0.3))");
+           .style("filter", "none");
    })
    .on("mouseleave", function() {
        d3.select(this).transition()
            .duration(300)
            .style("transform", "scale(1) rotateX(0deg) rotateY(0deg)")
-           .style("filter", "drop-shadow(0 15px 40px rgba(0,0,0,0.4)) drop-shadow(0 5px 15px rgba(0,0,0,0.2))");
+           .style("filter", "none");
    });
   
    // Add arrow button navigation for neighborhood changes
@@ -373,11 +341,11 @@ function addPhoneInteractions() {
 function addArrowNavigation() {
    const phoneContainer = d3.select("#phone-container");
   
-   // Create up arrow button
+   // Create up arrow button with Blue Jays logo (rotated 90deg clockwise)
    const upArrow = phoneContainer.append("div")
        .attr("id", "up-arrow")
        .style("position", "absolute")
-       .style("top", "-60px")
+       .style("top", "-40px")
        .style("left", "50%")
        .style("transform", "translateX(-50%)")
        .style("width", "40px")
@@ -390,17 +358,21 @@ function addArrowNavigation() {
        .style("cursor", "pointer")
        .style("z-index", "15")
        .style("box-shadow", "0 4px 12px rgba(0,0,0,0.3)")
-       .style("transition", "all 0.3s ease")
-       .html("↑")
-       .style("font-size", "20px")
-       .style("color", "#333")
-       .style("font-weight", "bold");
+       .style("transition", "all 0.3s ease");
+   
+   upArrow.append("img")
+       .attr("src", "data/blue jays icon.png")
+       .attr("alt", "Blue Jays Logo")
+       .style("width", "36px")
+       .style("height", "36px")
+       .style("object-fit", "contain")
+       .style("transform", "rotate(90deg)");
   
-   // Create down arrow button
+   // Create down arrow button with Blue Jays logo (rotated 90deg counterclockwise)
    const downArrow = phoneContainer.append("div")
        .attr("id", "down-arrow")
        .style("position", "absolute")
-       .style("bottom", "-60px")
+       .style("bottom", "-40px")
        .style("left", "50%")
        .style("transform", "translateX(-50%)")
        .style("width", "40px")
@@ -413,11 +385,15 @@ function addArrowNavigation() {
        .style("cursor", "pointer")
        .style("z-index", "15")
        .style("box-shadow", "0 4px 12px rgba(0,0,0,0.3)")
-       .style("transition", "all 0.3s ease")
-       .html("↓")
-       .style("font-size", "20px")
-       .style("color", "#333")
-       .style("font-weight", "bold");
+       .style("transition", "all 0.3s ease");
+   
+   downArrow.append("img")
+       .attr("src", "data/blue jays icon.png")
+       .attr("alt", "Blue Jays Logo")
+       .style("width", "36px")
+       .style("height", "36px")
+       .style("object-fit", "contain")
+       .style("transform", "rotate(-90deg)");
   
    // Add hover effects
    upArrow.on("mouseenter", function() {
@@ -461,10 +437,10 @@ function addArrowNavigation() {
 function changeNeighborhood(direction) {
    console.log("Changing neighborhood, direction:", direction);
   
-   const neighborhoodSelect = d3.select("#neighborhood-select");
-   const currentIndex = neighborhoodSelect.property("selectedIndex");
-   const options = neighborhoodSelect.selectAll("option").nodes();
-   const totalOptions = options.length;
+   if (!appData || !appData.neighbourhoods) return;
+  
+   const currentIndex = appData.neighbourhoods.findIndex(d => d.name === currentNeighborhood?.name);
+   const totalOptions = appData.neighbourhoods.length;
   
    let newIndex = currentIndex + direction;
   
@@ -477,16 +453,12 @@ function changeNeighborhood(direction) {
   
    console.log("Changing from index", currentIndex, "to", newIndex);
   
-   // Update the select and trigger change
-   neighborhoodSelect.property("selectedIndex", newIndex);
-   neighborhoodSelect.dispatch("change");
+   // Update the neighborhood
+   currentNeighborhood = appData.neighbourhoods[newIndex];
+   updateYearDropdown();
+   updateDisplay();
   
-   // Add visual feedback
-   const phone = d3.select("#phone");
-   phone.style("transform", "scale(1.05)");
-   setTimeout(() => {
-       phone.style("transform", "scale(1)");
-   }, 200);
+   // Visual feedback removed - phone no longer compresses/inflates on arrow click
 }
 
 
@@ -505,12 +477,12 @@ document.addEventListener("keydown", function(event) {
   
    if (event.key === "ArrowLeft" && currentIndex > 0) {
        const newYear = availableYears[currentIndex - 1];
-       d3.select("#year-select").property("value", newYear);
-       d3.select("#year-select").dispatch("change");
+       currentYear = newYear;
+       updateDisplay();
    } else if (event.key === "ArrowRight" && currentIndex < availableYears.length - 1) {
        const newYear = availableYears[currentIndex + 1];
-       d3.select("#year-select").property("value", newYear);
-       d3.select("#year-select").dispatch("change");
+       currentYear = newYear;
+       updateDisplay();
    }
 });
 
@@ -544,17 +516,47 @@ function handleSwipe() {
        if (diff > 0 && currentIndex < availableYears.length - 1) {
            // Swipe left - next year
            const newYear = availableYears[currentIndex + 1];
-           d3.select("#year-select").property("value", newYear);
-           d3.select("#year-select").dispatch("change");
+           currentYear = newYear;
+           updateDisplay();
        } else if (diff < 0 && currentIndex > 0) {
            // Swipe right - previous year
            const newYear = availableYears[currentIndex - 1];
-           d3.select("#year-select").property("value", newYear);
-           d3.select("#year-select").dispatch("change");
+           currentYear = newYear;
+           updateDisplay();
        }
    }
 }
 
+
+function adjustLabelFontSize(textSelector, labelSelector, baseFontSize) {
+   const textElement = d3.select(textSelector).node();
+   const labelElement = d3.select(labelSelector).node();
+   
+   if (!textElement || !labelElement) return;
+   
+   // Reset to base font size
+   const label = d3.select(labelSelector);
+   label.style("font-size", baseFontSize + "rem");
+   
+   // Wait for DOM to update
+   setTimeout(() => {
+       // Max height should be a bit shorter than image height (600px) - use 550px
+       const maxHeight = 550;
+       
+       // Since labels are rotated, measure the width (which becomes the visual height)
+       let currentFontSize = baseFontSize;
+       let textWidth = textElement.scrollWidth || textElement.offsetWidth;
+       
+       // Decrease font size until it fits
+       while (textWidth > maxHeight && currentFontSize > 0.4) {
+           currentFontSize -= 0.05;
+           label.style("font-size", currentFontSize + "rem");
+           // Force reflow to get updated measurements
+           void textElement.offsetWidth;
+           textWidth = textElement.scrollWidth || textElement.offsetWidth;
+       }
+   }, 50);
+}
 
 
 
