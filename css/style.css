@@ -1,41 +1,46 @@
-body {
+  body {
   background-color: #2B547E;
   font-family: "Inter", futura;
   margin: 0;
   padding: 0;
   min-height: 100vh;
-}
+  }
 
-#app {
+
+  #app {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
-}
+  }
 
-h1 {
+
+  h1 {
   font-weight: 700;
   margin-bottom: 10px;
   color: white;
   font-size: 2.5rem;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
+  }
 
-.subtitle {
+
+  .subtitle {
   color: rgba(255,255,255,0.9);
   margin-bottom: 40px;
   font-size: 1.1rem;
-}
+  }
 
-#main-layout {
+
+  #main-layout {
   display: flex;
   align-items: flex-start;
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
-}
+  }
 
-#controls {
+
+  #controls {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -46,25 +51,28 @@ h1 {
   gap: 20px;
   min-width: 250px;
   margin-top: 20px;
-}
+  }
 
-.control-group {
+
+  .control-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
   width: 100%;
-}
+  }
 
-.control-group label {
+
+  .control-group label {
   font-weight: 600;
   color: #555;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
+  }
 
-select {
+
+  select {
   padding: 12px 20px;
   border: 2px solid #e1e5e9;
   border-radius: 12px;
@@ -73,28 +81,32 @@ select {
   min-width: 200px;
   transition: all 0.3s ease;
   cursor: pointer;
-}
+  }
 
-select:focus {
+
+  select:focus {
   outline: none;
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
+  }
 
-select:hover {
+
+  select:hover {
   border-color: #667eea;
-}
+  }
 
-#phone-container {
+
+  #phone-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
   position: relative;
-}
+  }
 
-/* Polaroid Photo Styling */
-#polaroid {
+
+  /* Polaroid Photo Styling */
+  #polaroid {
   position: absolute;
   width: 300px;
   height: 550px;
@@ -106,41 +118,46 @@ select:hover {
   opacity: 1;
   z-index: 1;
   pointer-events: none;
-}
+  }
 
-#polaroid-photo {
+
+  #polaroid-photo {
   width: 100%;
   height: 85%;
   padding: 15px 15px 0 15px;
   box-sizing: border-box;
-}
+  }
 
-#polaroid-image {
+
+  #polaroid-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 4px;
   filter: grayscale(100%) sepia(0.3) contrast(1.1) brightness(0.9);
-}
+  }
 
-#polaroid-caption {
+
+  #polaroid-caption {
   height: 15%;
   padding: 10px 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+  }
 
-#polaroid-text {
+
+  #polaroid-text {
   margin: 0;
   font-family: 'Courier New', monospace;
   font-size: 0.8rem;
   color: #333;
   text-align: center;
   line-height: 1.2;
-}
+  }
 
-#phone {
+
+  #phone {
   position: relative;
   width: 300px;
   height: 600px;
@@ -149,38 +166,41 @@ select:hover {
   align-items: center;
   transition: all 0.3s ease;
   transform-style: preserve-3d;
-}
+  }
 
-#phone-svg {
+
+  #phone-svg {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
   pointer-events: none;
-}
+  }
 
-#screen-overlays {
+
+  #screen-overlays {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 5;
   pointer-events: none;
-}
+  }
 
-#overlay-svg {
+
+  #overlay-svg {
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
-}
-#dynamic {
+  }
+  #dynamic {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
   pointer-events: none;
-}
-#screen-content {
+  }
+  #screen-content {
   position: absolute;
   top: 32px;
   left: 20px;
@@ -191,27 +211,31 @@ select:hover {
   rx: "25";
   ry: "25";
   background: #000;
-}
+  }
 
-/* Overlay containers - both images in same position */
-#left-image-container, #right-image-container {
+
+  /* Overlay containers - both images in same position */
+  #left-image-container, #right-image-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
+  }
 
-#left-image-container {
+
+  #left-image-container {
   z-index: 1;
-}
+  }
 
-#right-image-container {
+
+  #right-image-container {
   z-index: 2;
-}
+  }
 
-#left-image, #right-image {
+
+  #left-image, #right-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -219,26 +243,30 @@ select:hover {
   transition: all 0.8s ease;
   opacity: 0;
   display: block;
-}
+  }
 
-#left-image.loaded, #right-image.loaded {
+
+  #left-image.loaded, #right-image.loaded {
   opacity: 1;
-}
+  }
 
-/* Black and white effect for the earlier photo (left) */
-#left-image {
+
+  /* Black and white effect for the earlier photo (left) */
+  #left-image {
   filter: grayscale(100%);
   transition: filter 0.3s ease;
-}
+  }
 
-/* Color effect for the later photo (right) */
-#right-image {
+
+  /* Color effect for the later photo (right) */
+  #right-image {
   filter: grayscale(0%);
   transition: filter 0.3s ease;
-}
+  }
 
-/* Draggable divider */
-#divider {
+
+  /* Draggable divider */
+  #divider {
   position: absolute;
   top: 25px;
   left: 50%;
@@ -249,13 +277,15 @@ select:hover {
   z-index: 10;
   transition: background 0.3s ease;
   box-shadow: 0 0 4px rgba(0,0,0,0.3);
-}
+  }
 
-#divider:hover {
+
+  #divider:hover {
   background: rgba(255, 255, 255, 1);
-}
+  }
 
-#divider-handle {
+
+  #divider-handle {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -268,17 +298,19 @@ select:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+  }
 
-#divider-handle::before {
+
+  #divider-handle::before {
   content: '⋮⋮';
   color: #333;
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 2px;
-}
+  }
 
-#image-overlay {
+
+  #image-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -289,26 +321,30 @@ select:hover {
   z-index: 3;
   pointer-events: none;
   border-radius: 0 0 25px 25px;
-}
+  }
 
-#location-name {
+
+  #location-name {
   margin: 0 0 5px 0;
   font-size: 1.1rem;
   font-weight: 600;
-}
+  }
 
-#location-year {
+
+  #location-year {
   margin: 0;
   font-size: 0.9rem;
   opacity: 0.9;
-}
+  }
 
-/* Loading animation */
-.loading {
+
+  /* Loading animation */
+  .loading {
   position: relative;
-}
+  }
 
-.loading::after {
+
+  .loading::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -320,47 +356,43 @@ select:hover {
   border-top: 2px solid transparent;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-}
+  }
 
-@keyframes spin {
+
+  @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
+  }
 
-/* Responsive design */
-@media (max-width: 768px) {
+
+  /* Responsive design */
+  @media (max-width: 768px) {
   #app {
     padding: 15px;
   }
-  
-  h1 {
+    h1 {
     font-size: 2rem;
   }
-  
-  #main-layout {
+    #main-layout {
     flex-direction: column;
     align-items: center;
     gap: 20px;
   }
-  
-  #controls {
+    #controls {
     flex-direction: row;
     gap: 20px;
     min-width: auto;
     width: 100%;
     justify-content: center;
   }
-  
-  select {
+    select {
     min-width: 150px;
   }
-  
-  #phone {
+    #phone {
     width: 250px;
     height: 500px;
   }
-  
-  #screen-content {
+    #screen-content {
     top: 21px;
     left: 12px;
     width: 142px;
@@ -368,12 +400,11 @@ select:hover {
     z-index: 2;
     overflow: hidden;
   }
-  
-  #main-image {
+    #main-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
   }
-}
+  }
