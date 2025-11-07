@@ -130,13 +130,19 @@ const nameMap2011to2021 = {
     "Moss Park": "Moss Park",
     "South Riverdale": "South Riverdale",
     "Trinity-Bellwoods": "Trinity-Bellwoods",
-    "Yonge-Bay Corridor": "Yonge-Bay Corridor"
+    "Bay Street Corridor": "Yonge-Bay Corridor"
 };
 
 // helper: get matching 2011 name given a 2021 neighbourhood 
 function getMatching2011Name(name2021) {
-    const match = Object.entries(nameMap2011to2021).find(([oldName, newName]) => newName === name2021);
-    return match ? match[0] : name2021; // default same name
+    // const match = Object.entries(nameMap2011to2021).find(([oldName, newName]) => newName === name2021);
+    // return match ? match[0] : name2021; // default same name
+    for (const [oldName, newName] of Object.entries(nameMap2011to2021)) {
+        if (newName === name2021) return oldName;
+    }
+    return name2021;
+
+
 }
 
 // loading datesets
@@ -149,7 +155,7 @@ Promise.all([
 ]).then(([d2011, d2021]) => {
     data2011 = d2011;
     data2021 = d2021;
-    console.log("✅ Loaded datasets");
+    console.log("Loaded datasets");
     initializeApp();
 });
 

@@ -9,11 +9,11 @@ TARGET_NEIGHBOURHOODS = [
     "Waterfront Communities-The Island",
     "South Riverdale",
     "Trinity-Bellwoods",
-    "Yonge-Bay Corridor",
+    "Bay Street Corridor",
 ]
 
 INPUT_PATH = "data/neighbourhood-profiles-2011-140-model.json"
-OUTPUT_PATH = "target_data/2011_cleaned_data_i_cry.json"
+OUTPUT_PATH = "cleaned_data/2011_cleaned_data_i_cry.json"
 
 def get_value(row, n):
     v = row.get(n)

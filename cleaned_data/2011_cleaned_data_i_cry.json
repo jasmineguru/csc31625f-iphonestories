@@ -294,25 +294,45 @@
     }
   },
   {
-    "neighbourhood": "Yonge-Bay Corridor",
+    "neighbourhood": "Bay Street Corridor",
     "landmark": "images/FAKE_city_hall_2011.jpg",
     "housing": {
-      "%_owner": null,
-      "%_renter": null,
-      "%_owners_with_mortgage": null,
-      "average_value_of_dwelling": null,
-      "average_monthly_shelter_costs_owned": null,
-      "average_monthly_shelter_costs_rented": null
+      "%_owner": 32.3,
+      "%_renter": 67.7,
+      "%_owners_with_mortgage": 60.3,
+      "average_value_of_dwelling": 470996.0,
+      "average_monthly_shelter_costs_owned": 1523.0,
+      "average_monthly_shelter_costs_rented": 1467.0
     },
     "transportation": {
-      "top_mode_of_transportation": null,
+      "top_mode_of_transportation": "Walked",
       "median_commuting_duration": null
     },
     "labour": {
-      "top_3_industries": []
+      "top_3_industries": [
+        {
+          "54 Professional, scientific and technical services": 16.0
+        },
+        {
+          "61 Educational services": 15.9
+        },
+        {
+          "62 Health care and social assistance": 15.8
+        }
+      ]
     },
     "demographic": {
-      "top_3_age_groups": []
+      "top_3_age_groups": [
+        {
+          "25 to 29 years": 19.1
+        },
+        {
+          "20 to 24 years": 15.9
+        },
+        {
+          "30 to 34 years": 14.3
+        }
+      ]
     }
   }
 ]
