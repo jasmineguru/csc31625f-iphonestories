@@ -1,0 +1,318 @@
+[
+  {
+    "neighbourhood": "Annex",
+    "landmark": "images/FAKE_uoft_2011.webp",
+    "housing": {
+      "%_owner": 37.1,
+      "%_renter": 62.9,
+      "%_owners_with_mortgage": 49.7,
+      "average_value_of_dwelling": 830450.0,
+      "average_monthly_shelter_costs_owned": 1838.0,
+      "average_monthly_shelter_costs_rented": 1237.0
+    },
+    "transportation": {
+      "top_mode_of_transportation": "Public transit",
+      "median_commuting_duration": null
+    },
+    "labour": {
+      "top_3_industries": [
+        {
+          "54 Professional, scientific and technical services": 18.4
+        },
+        {
+          "61 Educational services": 13.4
+        },
+        {
+          "62 Health care and social assistance": 9.1
+        }
+      ]
+    },
+    "demographic": {
+      "top_3_age_groups": [
+        {
+          "25 to 29 years": 14.4
+        },
+        {
+          "20 to 24 years": 10.4
+        },
+        {
+          "30 to 34 years": 10.3
+        }
+      ]
+    }
+  },
+  {
+    "neighbourhood": "High Park-Swansea",
+    "landmark": "images/highpark_2011.jpg",
+    "housing": {
+      "%_owner": 60.7,
+      "%_renter": 39.3,
+      "%_owners_with_mortgage": 54.1,
+      "average_value_of_dwelling": 648124.0,
+      "average_monthly_shelter_costs_owned": 1618.0,
+      "average_monthly_shelter_costs_rented": 1053.0
+    },
+    "transportation": {
+      "top_mode_of_transportation": "Car, truck or van - as a driver",
+      "median_commuting_duration": null
+    },
+    "labour": {
+      "top_3_industries": [
+        {
+          "54 Professional, scientific and technical services": 15.2
+        },
+        {
+          "61 Educational services": 13.0
+        },
+        {
+          "62 Health care and social assistance": 10.0
+        }
+      ]
+    },
+    "demographic": {
+      "top_3_age_groups": [
+        {
+          "30 to 34 years": 8.7
+        },
+        {
+          "35 to 39 years": 8.6
+        },
+        {
+          "40 to 44 years": 8.6
+        }
+      ]
+    }
+  },
+  {
+    "neighbourhood": "Casa Loma",
+    "landmark": "images/FAKE_casa_loma_2011.png",
+    "housing": {
+      "%_owner": 41.8,
+      "%_renter": 58.2,
+      "%_owners_with_mortgage": 47.3,
+      "average_value_of_dwelling": 1090696.0,
+      "average_monthly_shelter_costs_owned": 2001.0,
+      "average_monthly_shelter_costs_rented": 1494.0
+    },
+    "transportation": {
+      "top_mode_of_transportation": "Public transit",
+      "median_commuting_duration": null
+    },
+    "labour": {
+      "top_3_industries": [
+        {
+          "54 Professional, scientific and technical services": 20.7
+        },
+        {
+          "61 Educational services": 10.7
+        },
+        {
+          "52 Finance and insurance": 10.6
+        }
+      ]
+    },
+    "demographic": {
+      "top_3_age_groups": [
+        {
+          "25 to 29 years": 10.2
+        },
+        {
+          "60 to 64 years": 7.9
+        },
+        {
+          "30 to 34 years": 7.8
+        }
+      ]
+    }
+  },
+  {
+    "neighbourhood": "Kensington-Chinatown",
+    "landmark": "images/chinatown_2011.png",
+    "housing": {
+      "%_owner": 30.8,
+      "%_renter": 69.2,
+      "%_owners_with_mortgage": 53.3,
+      "average_value_of_dwelling": 489709.0,
+      "average_monthly_shelter_costs_owned": 1513.0,
+      "average_monthly_shelter_costs_rented": 1004.0
+    },
+    "transportation": {
+      "top_mode_of_transportation": "Walked",
+      "median_commuting_duration": null
+    },
+    "labour": {
+      "top_3_industries": [
+        {
+          "54 Professional, scientific and technical services": 15.2
+        },
+        {
+          "72 Accommodation and food services": 14.7
+        },
+        {
+          "44-45 Retail trade": 12.2
+        }
+      ]
+    },
+    "demographic": {
+      "top_3_age_groups": [
+        {
+          "20 to 24 years": 14.5
+        },
+        {
+          "25 to 29 years": 14.1
+        },
+        {
+          "30 to 34 years": 9.6
+        }
+      ]
+    }
+  },
+  {
+    "neighbourhood": "Moss Park",
+    "landmark": "images/FAKE_allan_gardens_2011.jpg",
+    "housing": {
+      "%_owner": 37.0,
+      "%_renter": 63.0,
+      "%_owners_with_mortgage": 73.8,
+      "average_value_of_dwelling": 455212.0,
+      "average_monthly_shelter_costs_owned": 1679.0,
+      "average_monthly_shelter_costs_rented": 795.0
+    },
+    "transportation": {
+      "top_mode_of_transportation": "Walked",
+      "median_commuting_duration": null
+    },
+    "labour": {
+      "top_3_industries": [
+        {
+          "54 Professional, scientific and technical services": 14.7
+        },
+        {
+          "52 Finance and insurance": 11.7
+        },
+        {
+          "72 Accommodation and food services": 9.9
+        }
+      ]
+    },
+    "demographic": {
+      "top_3_age_groups": [
+        {
+          "25 to 29 years": 12.2
+        },
+        {
+          "30 to 34 years": 12.1
+        },
+        {
+          "35 to 39 years": 10.1
+        }
+      ]
+    }
+  },
+  {
+    "neighbourhood": "Waterfront Communities-The Island",
+    "landmark": "images/cntower_2011.jpg",
+    "housing": {
+      "%_owner": 49.4,
+      "%_renter": 50.5,
+      "%_owners_with_mortgage": 77.5,
+      "average_value_of_dwelling": 418977.0,
+      "average_monthly_shelter_costs_owned": 1742.0,
+      "average_monthly_shelter_costs_rented": 1417.0
+    },
+    "transportation": {
+      "top_mode_of_transportation": "Walked",
+      "median_commuting_duration": null
+    },
+    "labour": {
+      "top_3_industries": [
+        {
+          "54 Professional, scientific and technical services": 21.6
+        },
+        {
+          "52 Finance and insurance": 17.2
+        },
+        {
+          "51 Information and cultural industries": 7.4
+        }
+      ]
+    },
+    "demographic": {
+      "top_3_age_groups": [
+        {
+          "25 to 29 years": 21.7
+        },
+        {
+          "30 to 34 years": 18.1
+        },
+        {
+          "35 to 39 years": 11.0
+        }
+      ]
+    }
+  },
+  {
+    "neighbourhood": "Trinity-Bellwoods",
+    "landmark": "images/trinitybellwoods_2011.png",
+    "housing": {
+      "%_owner": 57.1,
+      "%_renter": 43.0,
+      "%_owners_with_mortgage": 52.0,
+      "average_value_of_dwelling": 594191.0,
+      "average_monthly_shelter_costs_owned": 1458.0,
+      "average_monthly_shelter_costs_rented": 1130.0
+    },
+    "transportation": {
+      "top_mode_of_transportation": "Public transit",
+      "median_commuting_duration": null
+    },
+    "labour": {
+      "top_3_industries": [
+        {
+          "54 Professional, scientific and technical services": 14.4
+        },
+        {
+          "72 Accommodation and food services": 11.3
+        },
+        {
+          "44-45 Retail trade": 8.7
+        }
+      ]
+    },
+    "demographic": {
+      "top_3_age_groups": [
+        {
+          "25 to 29 years": 13.3
+        },
+        {
+          "30 to 34 years": 10.9
+        },
+        {
+          "35 to 39 years": 8.6
+        }
+      ]
+    }
+  },
+  {
+    "neighbourhood": "Yonge-Bay Corridor",
+    "landmark": "images/FAKE_city_hall_2011.jpg",
+    "housing": {
+      "%_owner": null,
+      "%_renter": null,
+      "%_owners_with_mortgage": null,
+      "average_value_of_dwelling": null,
+      "average_monthly_shelter_costs_owned": null,
+      "average_monthly_shelter_costs_rented": null
+    },
+    "transportation": {
+      "top_mode_of_transportation": null,
+      "median_commuting_duration": null
+    },
+    "labour": {
+      "top_3_industries": []
+    },
+    "demographic": {
+      "top_3_age_groups": []
+    }
+  }
+]
