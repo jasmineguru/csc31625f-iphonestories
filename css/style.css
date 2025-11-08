@@ -1,3 +1,7 @@
+  #audio-player audio {
+  display: none;
+  }
+
   #play-button {
   all: unset;
   cursor: pointer;
@@ -15,7 +19,7 @@
   }
   #audio-player {
   position: fixed;
-  bottom: 70px;
+  bottom: 210px;
   left: 100px;
   width: 160px;
   height: 160px;
