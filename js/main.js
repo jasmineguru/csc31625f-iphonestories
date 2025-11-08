@@ -1,3 +1,33 @@
+function setupAudioPlayer() {
+   const playButton = document.getElementById("play-button");
+   const vinyl = document.getElementById("vinyl");
+   const audio = document.getElementById("background-music");
+
+   if (!playButton || !audio || !vinyl) return;
+
+   const updateVisualState = () => {
+       if (!audio.paused && !audio.ended) {
+           vinyl.classList.add("spinning");
+       } else {
+           vinyl.classList.remove("spinning");
+       }
+   };
+
+   audio.addEventListener("play", updateVisualState);
+   audio.addEventListener("pause", updateVisualState);
+   audio.addEventListener("ended", updateVisualState);
+
+   playButton.addEventListener("click", () => {
+       if (audio.paused) {
+           audio.play().catch(err => console.warn("Autoplay blocked:", err));
+       } else {
+           audio.pause();
+       }
+   });
+
+   // Ensure initial state is synced (e.g., if autoplay blocked)
+   updateVisualState();
+}
 // iPhone Time Stories - D3 Interactive Visualization
 let appData = null;
 let currentNeighborhood = null;
@@ -20,6 +50,8 @@ function initializeApp() {
            updateDisplay();
        }
    }, 100);
+
+   setupAudioPlayer();
 }
 
 
