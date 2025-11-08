@@ -254,7 +254,17 @@ function updateDisplay() {
     // Update captions
     d3.select("#location-name").text(year2021Name);
     d3.select("#location-year").text("Then vs. Now");
-    d3.select("#polaroid-text").text(`${leftPhoto.year} • ${year2011Name}`);
+    d3.select("#polaroid-text")
+        .text(year2011Name);
+
+    const leftLabel = d3.select("#location-year-left");
+    const rightLabel = d3.select("#location-year-right");
+
+    leftLabel.text(`${leftPhoto.year}  •  ${year2011Name}`);
+    rightLabel.text(`${year2021Name}  •  ${rightPhoto.year}`);
+
+    adjustLabelFontSize("#location-year-left", "#location-label-left", 0.8);
+    adjustLabelFontSize("#location-year-right", "#location-label-right", 0.9);
 
     // Reset slider and transitions
     setInitialPosition();
